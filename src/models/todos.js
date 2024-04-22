@@ -8,8 +8,8 @@ async function getAllLists() {
 }
 
 async function createList(body) {
-  const { subject, done } = body;
-  const result = await dbLists.insertOne({ subject, done });
+  const { subject } = body;
+  const result = await dbLists.insertOne({ subject, done: false });
   const data = await dbLists.findOne(result.insertedId);
   return data;
 }
